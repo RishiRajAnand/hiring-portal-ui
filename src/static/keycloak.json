@@ -1,0 +1,8 @@
+{
+  "realm": "HiringRealm",
+  "auth-server-url": "http://localhost:8230/auth/",
+  "ssl-required": "external",
+  "resource": "hiring-ui",
+  "public-client": true,
+  "confidential-port": 0
+}

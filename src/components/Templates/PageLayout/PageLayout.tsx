@@ -6,6 +6,7 @@ import PublishedJobPage from '../PublishedJobPage/PublishedJobPage';
 import EasyRecruitLogo from '../../../static/EasyRecruitLogo.svg';
 import './PageLayout.css';
 import CandidateProfilePage from '../CandidateProfilePage/CandidateProfilePage';
+import { PrivateRoute } from 'src/utils/privateRoute';
 
 const PageLayout = (props) => {
     const { pathname } = props.location;
@@ -35,7 +36,7 @@ const PageLayout = (props) => {
                     >
                         Publish Jobs
                     </Link>
-                </NavItem>      
+                </NavItem>
             </NavList>
         </Nav>
     );
@@ -43,10 +44,10 @@ const PageLayout = (props) => {
     const onNavToggle = () => {
         setIsNavOpen(!isNavOpen);
     };
-    
+
     const BrandClick = () => {
         props.history.push('/');
-      };
+    };
 
     const Header = (
         <PageHeader
@@ -82,7 +83,7 @@ const PageLayout = (props) => {
                 <Route exact path="/" render={() => <Redirect to="/jobs" />} />
                 <Route exact path="/jobs" component={PublishedJobPage} />
                 <Route exact path="/jobs/:id" component={ApplyJobPage} />
-                <Route exact path="/profile" component={CandidateProfilePage} />
+                <PrivateRoute roles={['candidate']} exact path="/profile" component={CandidateProfilePage} />
             </Switch>
         </Page>
     )
